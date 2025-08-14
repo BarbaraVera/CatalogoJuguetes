@@ -1,0 +1,136 @@
+{% extends 'catalogo/base.html' %}
+
+{% block title %}Nuestra Tienda de Peluches{% endblock %}
+
+{% block content %}
+<main class="container mx-auto px-6 py-10 flex-grow">
+    <div class="flex flex-col lg:flex-row gap-12">
+
+        <div class="lg:hidden mb-6 text-center">
+            <button id="filter-toggle-button" class="w-full rounded-lg bg-sky-500 py-3 px-4 font-bold text-white shadow-md hover:bg-sky-600 transition">
+                Mostrar Filtros
+            </button>
+        </div>
+
+        <aside id="filter-sidebar" class="w-full lg:w-1/4 hidden lg:block">
+            <form method="get" action="{% url 'lista_productos' %}">
+                <div class="sticky top-28 space-y-8 bg-white p-6 rounded-2xl shadow-lg">
+                    
+                    <div>
+                        <h3 class="logo-font"><span>Ordenar por</span></h3>
+                        <select name="ordenar" onchange="this.form.submit()" class="form-select w-full mt-2 rounded-lg ...">
+                            <option value="populares" {% if ordenar_seleccionado == 'populares' %}selected{% endif %}>Popularidad</option>
+                            <option value="precio_asc" {% if ordenar_seleccionado == 'precio_asc' %}selected{% endif %}>Precio: de menor a mayor</option>
+                            <option value="precio_desc" {% if ordenar_seleccionado == 'precio_desc' %}selected{% endif %}>Precio: de mayor a menor</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <h3 class="logo-font"><span>Categoría</span></h3>
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <label class="filter-option-label">
+                                <input onchange="this.form.submit()" class="sr-only" name="categoria" type="radio" value="" {% if not categoria_seleccionada %}checked{% endif %}/>
+                                <span>Todas</span>
+                            </label>
+                            {% for categoria in categorias %}
+                            <label class="filter-option-label">
+                                <input onchange="this.form.submit()" class="sr-only" name="categoria" type="radio" value="{{ categoria.id }}" {% if categoria_seleccionada == categoria.id|stringformat:"s" %}checked{% endif %}/>
+                                <span>{{ categoria.nombre }}</span>
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="logo-font flex justify-between items-center">
+                            <span>Rango de Precio</span>
+                            <span id="precio-max-display" class="font-sans text-base font-bold text-[var(--primary-color)]">
+                                ${{ precio_max_seleccionado|default:'100000' }}
+                            </span>
+                        </h3>
+                        <div class="mt-4 relative">
+                            <input id="precio-max-slider" name="precio_max" type="range" min="10000" max="100000" step="5000" value="{{ precio_max_seleccionado|default:'100000' }}" onchange="this.form.submit()" class="w-full h-2 bg-gray-200 rounded-lg ..."/>
+                            <div class="flex justify-between items-center text-sm text-gray-500 mt-2">
+                                <span>$10.000</span>
+                                <span>$100.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="mt-6 text-center">
+                <a href="{% url 'lista_productos' %}" class="text-sm font-semibold text-gray-500 ...">
+                    Limpiar todos los filtros
+                </a>
+            </div>
+        </aside>
+
+        <section class="w-full lg:w-3/4">
+            <div class="flex justify-between items-center mb-8">
+                {% if query %}
+                    <h1 class="text-4xl font-bold logo-font text-[var(--text-primary)]">Resultados para "{{ query }}"</h1>
+                {% else %}
+                    <h1 class="text-4xl font-bold logo-font text-[var(--text-primary)]">Nuestros Productos</h1>
+                {% endif %}
+                <p class="text-[var(--text-secondary)]">Mostrando {{ productos|length }} resultados</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+                {% for producto in productos %}
+                <div class="product-card group">
+                    <div class="relative bg-sky-100">
+                        <a href="{% url 'detalle_producto' producto.pk %}">
+                            <img alt="{{ producto.nombre }}" class="object-contain w-full h-64 p-4" src="{{ producto.imagen.url }}">
+                        </a>
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-bold text-lg text-[var(--text-primary)]">
+                            <a href="{% url 'detalle_producto' producto.pk %}" class="hover:text-[var(--primary-color)] transition-colors">
+                                {{ producto.nombre }}
+                            </a>
+                        </h3>
+                        <p class="text-xl font-bold text-[var(--primary-color)] mt-2">${{ producto.precio }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="col-span-full text-center text-lg text-gray-500">No se encontraron productos.</p>
+                {% endfor %}
+            </div>
+
+            {% if productos.has_other_pages %}
+            <div class="mt-12 flex justify-center items-center gap-4">
+                </div>
+            {% endif %}
+        </section>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+{{ block.super }} <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Script para el slider de precios
+    const slider = document.getElementById('precio-max-slider');
+    const display = document.getElementById('precio-max-display');
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', minimumFractionDigits: 0 }).format(value);
+    }
+    if (slider && display) {
+        display.textContent = formatCurrency(slider.value);
+        slider.addEventListener('input', function() {
+            display.textContent = formatCurrency(this.value);
+        });
+    }
+
+    // Script para el botón de filtros en móvil
+    const filterButton = document.getElementById('filter-toggle-button');
+    const filterSidebar = document.getElementById('filter-sidebar');
+    if (filterButton && filterSidebar) {
+        filterButton.addEventListener('click', () => {
+            filterSidebar.classList.toggle('hidden');
+            const isHidden = filterSidebar.classList.contains('hidden');
+            filterButton.textContent = isHidden ? 'Mostrar Filtros' : 'Ocultar Filtros';
+        });
+    }
+});
+</script>
+{% endblock %}

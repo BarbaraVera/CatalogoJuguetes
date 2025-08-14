@@ -1,0 +1,111 @@
+/* Contenedor principal de las burbujas */
+.bubbles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evita que se vea scroll si una burbuja se sale */
+    z-index: 0; /* Lo pone detrás de todo */
+}
+
+/* Estilo base de cada burbuja */
+.bubble {
+    position: absolute;
+    bottom: -150px; /* Empiezan fuera de la pantalla, abajo */
+    width: 20px;
+    height: 20px;
+    background-color: rgba(147, 197, 253, 0.2); /* Un celeste pálido y semitransparente, como tu header */
+    border-radius: 50%;
+    animation: bubble-rise 25s infinite ease-in;
+}
+
+/* Animación de subida de las burbujas */
+@keyframes bubble-rise {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1080px); /* Sube 1080px hacia arriba */
+        opacity: 0; /* Se desvanece al final */
+    }
+}
+
+/* --- Personalización para que no sean todas iguales --- */
+
+.bubble:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+    animation-duration: 25s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 20px;
+    height: 20px;
+    left: 20%;
+    animation-duration: 15s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    width: 50px;
+    height: 50px;
+    left: 35%;
+    animation-duration: 30s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(4) {
+    width: 60px;
+    height: 60px;
+    left: 55%;
+    animation-duration: 22s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(5) {
+    width: 35px;
+    height: 35px;
+    left: 70%;
+    animation-duration: 35s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(6) {
+    width: 100px;
+    height: 100px;
+    left: 85%;
+    animation-duration: 28s;
+    animation-delay: 5s;
+}
+
+        #hero-slideshow {
+        position: relative;
+        overflow: hidden; 
+        }
+
+        .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        opacity: 0; 
+        transition: opacity 1s ease-in-out; 
+        z-index: 1; 
+        }
+
+        .slide.active {
+        opacity: 1; 
+        }
+
+        #hero-slideshow > .absolute {
+            z-index: 2;
+        }
+        #hero-slideshow > .container {
+            z-index: 3;
+        }
