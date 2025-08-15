@@ -9,6 +9,12 @@
     <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
@@ -209,6 +215,36 @@ document.addEventListener('DOMContentLoaded', function() {
             startSlideShow();
         }
     }
+
+
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 2, // Muestra 2 slides por vista en móviles
+    spaceBetween: 20, 
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    // Configuración para diferentes tamaños de pantalla 
+    breakpoints: {
+      640: {
+        slidesPerView: 4, 
+        spaceBetween: 24,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 24,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 24,
+      },
+    },
+  });
 
 });
 
