@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://catalogojuguetes.onrender.com/sitemap.xml
