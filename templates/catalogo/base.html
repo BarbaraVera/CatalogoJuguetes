@@ -41,32 +41,6 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
-    <style type="text/tailwindcss">
-        :root {
-            --primary-color: #FF6B6B;      
-            --secondary-color: #FFE66D;    
-            --accent-color: #9BC9DF;       
-            --text-color: #444444;       
-            --bg-color: #FFFFFF;
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-        .logo-font {
-            font-family: 'Fredoka One', cursive;
-        }
-        .filter-option-label {
-            @apply cursor-pointer flex items-center justify-center rounded-full border-2 border-gray-200 px-4 py-1.5 text-sm font-medium text-gray-700 transition-all duration-200;
-        }
-        .filter-option-label:hover {
-            @apply border-[var(--secondary-color)] text-[var(--secondary-color)];
-        }
-        .filter-option-label:has(:checked) {
-            @apply bg-[var(--secondary-color)] text-white border-[var(--secondary-color)];
-        }
-    </style>
     {% block extra_styles %}{% endblock %}
 </head>
 <body class="bg-gray-50">
