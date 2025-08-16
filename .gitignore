@@ -25,3 +25,9 @@ db.sqlite3
 # Archivos del sistema operativo
 .DS_Store
 Thumbs.db
+
+# Dependencias de Node
+node_modules/
+
+# Archivos de producción
+/static/css/output.css
