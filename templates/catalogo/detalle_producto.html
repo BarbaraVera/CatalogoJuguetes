@@ -96,3 +96,30 @@
     {% endif %}
 </div>
 {% endblock %}
+{% block extra_head_scripts %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ producto.nombre }}",
+  "image": "{{ producto.imagen.url }}",
+  "description": "{{ producto.descripcion }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Aqui Toys"
+  },
+  "sku": "{{ producto.pk }}",
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ request.build_absolute_uri }}",
+    "priceCurrency": "CLP",
+    "price": "{{ producto.precio }}",
+    "availability": "{% if producto.stock > 0 %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "seller": {
+      "@type": "Organization",
+      "name": "Aqui Toys"
+    }
+  }
+}
+</script>
+{% endblock %}
