@@ -48,12 +48,9 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'App.catalogo',
-    'django.contrib.sites',
-    'django.contrib.sitemaps',
     'cloudinary_storage',
     'cloudinary', 
 ]
-SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

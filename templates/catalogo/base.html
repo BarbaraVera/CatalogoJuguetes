@@ -4,41 +4,18 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO: Title dinámico -->
-    <title>{% block title %}Aqui toys{% endblock %}</title>
-
-    <!-- SEO: Meta tags -->
-    <meta name="description" content="{% block meta_description %}Tienda online de juguetes y productos infantiles - Encuentra lo mejor en Aqui Toys{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}juguetes, tienda infantil, regalos, productos para niños{% endblock %}">
-    <meta name="author" content="Aqui Toys">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="{% block og_title %}Aqui Toys{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Descubre juguetes y productos para niños, calidad y diversión asegurada{% endblock %}">
-    <meta property="og:image" content="{% static 'tienda_vale/logo.png' %}">
-    <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}Aqui Toys{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}La mejor tienda online de juguetes{% endblock %}">
-    <meta name="twitter:image" content="{% static 'tienda_vale/logo.png' %}">
-
-    <!-- Favicon -->
+    <title>{% block title %}Peluches Adorables{% endblock %} - NOMBRE</title>
     <link rel="icon" href="{% static 'tienda_vale/logo.png' %}" type="image/png">
-
-    <!-- Fonts & Tailwind -->
     <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 
-    <!-- Swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
-    <!-- Styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
     <style type="text/tailwindcss">
@@ -81,15 +58,15 @@
 {% endif %}
 <div class="flex flex-col min-h-screen">
     
-    <!-- HEADER -->
     <header class="sticky top-0 z-40 w-full border-b-4 border-b-[var(--secondary-color)] bg-[var(--accent-color)]/95 px-4 py-3 backdrop-blur-sm sm:px-6 lg:px-8" style="background-color: #9bc9dfff">
         <div class="mx-auto flex max-w-7xl items-center justify-between">
             <div class="flex items-center gap-8">
                 <a class="flex items-center gap-2 text-white" href="/">
-                    <img src="{% static 'tienda_vale/logo.png' %}" alt="Aqui Toys - Tienda de juguetes" class="h-20 w-auto" loading="lazy">
+                        <img src="{% static 'tienda_vale/logo.png' %}" alt="Logo de ELNOMBRE" class="h-20 w-auto">
+                    
                 </a>
-                <nav class="hidden items-center gap-8 md:flex" aria-label="Navegación principal">
-                    <a href="{% url 'lista_productos' %}" class="text-lg font-medium text-white transition-colors hover:text-[var(--secondary-color)]">Catálogo</a>
+                <nav class="hidden items-center gap-8 md:flex">
+                    <a href="{% url 'lista_productos' %}" class="text-lg font-medium text-white transition-colors hover:text-[var(--secondary-color)]">Catalogo</a>
                 </nav>
             </div>
             <div class="flex items-center justify-end gap-3">
@@ -110,7 +87,7 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="space-y-4 px-2 pt-2 pb-3 sm:px-3">
-                <a href="{% url 'lista_productos' %}" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-white/20">Catálogo</a>
+                <a href="{% url 'lista_productos' %}" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-white/20">Catalogo</a>
                 <div class="px-2">
                     <form method="get" action="{% url 'lista_productos' %}" class="relative">
                         <button type="submit" class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
@@ -123,53 +100,43 @@
         </div>
     </header>
 
-    <!-- MAIN -->
-    <main class="flex-1">
-        {% block content %}{% endblock %}
-    </main>
+        <main class="flex-1">
+            {% block content %}{% endblock %}
+        </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#90C3D4] text-white/80 py-8" itemscope itemtype="https://schema.org/Store">
-        <div class="container mx-auto relative flex flex-col items-center gap-6 px-4 py-8 md:flex-row md:justify-start">
+        <footer class="bg-[#90C3D4] text-white/80 py-8">
+            <div class="container mx-auto relative flex flex-col items-center gap-6 px-4 py-8 md:flex-row md:justify-start">
 
-            <div class="text-center md:text-left">
-                <span class="block text-lg font-semibold mb-2">Síguenos en nuestras redes</span>
-                <div class="flex items-center justify-center gap-4 md:justify-start">
-                    <a href="https://facebook.com/" target="_blank" class="transition hover:text-white" aria-label="Facebook" itemprop="sameAs">
-                        <!-- SVG Facebook -->
-                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+    <div class="text-center md:text-left">
+        <span class="block text-lg font-semibold mb-2">Síguenos en nuestras redes</span>
+        <div class="flex items-center justify-center gap-4 md:justify-start">
+            <a href="https://facebook.com/" target="_blank" class="transition hover:text-white" aria-label="Facebook">
+                <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
                                 <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.406.593 24 1.325 24H12.82v-9.294H9.692V11.31h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.396h-3.123V24h6.116C23.406 24 24 23.406 24 22.676V1.325C24 .593 23.406 0 22.675 0z" />
                             </svg>
-                    </a>
-                    <a href="https://instagram.com/" target="_blank" class="transition hover:text-white" aria-label="Instagram" itemprop="sameAs">
-                        <!-- SVG Instagram -->
-                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+            </a>
+            <a href="https://instagram.com/" target="_blank" class="transition hover:text-white" aria-label="Instagram">
+                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                         <path
                             d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.427.415a4.92 4.92 0 011.675 1.087 4.92 4.92 0 011.087 1.675c.175.457.36 1.257.415 2.427.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.415 2.427a4.92 4.92 0 01-1.087 1.675 4.92 4.92 0 01-1.675 1.087c-.457.175-1.257.36-2.427.415-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.427-.415a4.902 4.902 0 01-2.762-2.762c-.175-.457-.36-1.257-.415-2.427-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.17.24-1.97.415-2.427A4.902 4.902 0 015.48 2.648c.457-.175 1.257-.36 2.427-.415 1.266-.058 1.646-.07 4.85-.07zm0 1.838c-3.17 0-3.548.012-4.796.069-1.035.049-1.602.22-1.975.366a3.07 3.07 0 00-1.106.724 3.07 3.07 0 00-.724 1.106c-.146.373-.317.94-.366 1.975-.057 1.248-.069 1.626-.069 4.796s.012 3.548.069 4.796c.049 1.035.22 1.602.366 1.975.153.391.38.737.724 1.106.369.344.715.571 1.106.724.373.146.94.317 1.975.366 1.248.057 1.626.069 4.796.069s3.548-.012 4.796-.069c1.035-.049 1.602-.22 1.975-.366a3.07 3.07 0 001.106-.724 3.07 3.07 0 00.724-1.106c.146-.373.317-.94.366-1.975.057-1.248.069-1.626.069-4.796s-.012-3.548-.069-4.796c-.049-1.035-.22-1.602-.366-1.975a3.07 3.07 0 00-.724-1.106 3.07 3.07 0 00-1.106-.724c-.373-.146-.94-.317-1.975-.366-1.248-.057-1.626-.069-4.796-.069zm0 3.838a6.163 6.163 0 100 12.326 6.163 6.163 0 000-12.326zm0 10.163a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
                     </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="text-center text-lg md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
-                <p>© {% now "Y" %} Aqui Toys. Todos los derechos reservados.</p>
-                <meta itemprop="name" content="Aqui Toys">
-                <meta itemprop="url" content="https://tusitio.com">
-                <meta itemprop="telephone" content="+56 9 6477 4860">
-                <meta itemprop="address" content="Chile">
-            </div>
+            </a>
         </div>
-    </footer>
+    </div>
+
+    <div class="text-center text-lg md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+        <p>© {% now "Y" %} Aqui toys. Todos los derechos reservados.</p>
+    </div>
 
 </div>
+        </footer>
 
-<!-- Botón WhatsApp -->
-<a href="https://api.whatsapp.com/send?phone=56964774860&text=Hola!%20Me%20interesan%20sus%20productos%20del%20catálogo." target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 transition-transform duration-300 hover:scale-110 z-50 flex items-center justify-center" aria-label="Contactar por WhatsApp">
-    Contáctanos!
-    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28" height="28" viewBox="0 0 48 48">
+    </div>
+    <a href="https://api.whatsapp.com/send?phone=56964774860&text=Hola!%20Me%20interesan%20sus%20productos%20del%20catálogo." target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 transition-transform duration-300 hover:scale-110 z-50 flex items-center justify-center" aria-label="Contactar por WhatsApp">
+            Contactanos! <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="28" height="28" viewBox="0 0 48 48">
             <path fill="#fff" d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6	C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19c0,0,0,0,0,0h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z"></path><path fill="#fff" d="M4.9,43.8c-0.1,0-0.3-0.1-0.4-0.1c-0.1-0.1-0.2-0.3-0.1-0.5L7,33.5c-1.6-2.9-2.5-6.2-2.5-9.6	C4.5,13.2,13.3,4.5,24,4.5c5.2,0,10.1,2,13.8,5.7c3.7,3.7,5.7,8.6,5.7,13.8c0,10.7-8.7,19.5-19.5,19.5c-3.2,0-6.3-0.8-9.1-2.3	L5,43.8C5,43.8,4.9,43.8,4.9,43.8z"></path><path fill="#cfd8dc" d="M24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3	L4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5 M24,43L24,43L24,43 M24,43L24,43L24,43 M24,4L24,4C13,4,4,13,4,24	c0,3.4,0.8,6.7,2.5,9.6L3.9,43c-0.1,0.3,0,0.7,0.3,1c0.2,0.2,0.4,0.3,0.7,0.3c0.1,0,0.2,0,0.3,0l9.7-2.5c2.8,1.5,6,2.2,9.2,2.2	c11,0,20-9,20-20c0-5.3-2.1-10.4-5.8-14.1C34.4,6.1,29.4,4,24,4L24,4z"></path><path fill="#40c351" d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8	l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z"></path><path fill="#fff" fill-rule="evenodd" d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0	s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3	c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9	c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8	c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z" clip-rule="evenodd"></path>
             </svg>
-</a>
+    </a>
 {% block extra_scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -249,9 +216,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-});
 
-var swiper = new Swiper(".mySwiper", {
+  var swiper = new Swiper(".mySwiper", {
     slidesPerView: 2, // Muestra 2 slides por vista en móviles
     spaceBetween: 20, 
     loop: true,
@@ -263,7 +229,7 @@ var swiper = new Swiper(".mySwiper", {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-    // Configuración para diferentes tamaños de pantalla
+    // Configuración para diferentes tamaños de pantalla 
     breakpoints: {
       640: {
         slidesPerView: 4, 
@@ -279,6 +245,10 @@ var swiper = new Swiper(".mySwiper", {
       },
     },
   });
+
+});
+
+
 </script>
 {% endblock %}
 </body>
