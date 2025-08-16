@@ -21,7 +21,7 @@
                     <!-- Ordenar -->
                     <div>
                         <h2 class="logo-font text-lg font-bold">Ordenar por</h2>
-                        <select name="ordenar" onchange="this.form.submit()" class="form-select w-full mt-2 rounded-lg ...">
+                        <select name="ordenar" onchange="this.form.submit()" class="form-select w-full mt-2 rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 shadow-sm">
                             <option value="precio_asc" {% if ordenar_seleccionado == 'precio_asc' %}selected{% endif %}>Precio: de menor a mayor</option>
                             <option value="precio_desc" {% if ordenar_seleccionado == 'precio_desc' %}selected{% endif %}>Precio: de mayor a menor</option>
                         </select>
