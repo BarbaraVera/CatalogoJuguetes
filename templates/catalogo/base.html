@@ -225,34 +225,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 2, // Muestra 2 slides por vista en móviles
-    spaceBetween: 20, // Espacio entre slides
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    // Configuración para diferentes tamaños de pantalla (como la grilla original)
-    breakpoints: {
-      640: {
-        slidesPerView: 4, // 4 slides en pantallas más grandes de 640px (sm)
-        spaceBetween: 24,
-      },
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 24,
-      },
-      1024: {
-        slidesPerView: 4,
-        spaceBetween: 24,
-      },
-    },
-  });
+  var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2, // Tu configuración actual
+        spaceBetween: 20, 
+        loop: {% if productos_relacionados|length >= 4 %}true{% else %}false{% endif %}, // Solución al warning
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 24,
+            },
+        },
+    });
 </script>
 {% endblock %}
 </body>
