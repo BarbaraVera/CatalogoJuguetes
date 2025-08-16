@@ -1,24 +1,12 @@
 {% extends 'catalogo/base.html' %} 
-{% block title %}Aqui toys{%endblock %} {% block content %}
-{% load static %}
-{% block extra_meta %}
-  <meta name="description" content="Descubre el catálogo de Aqui Toys: peluches, juguetes y accesorios únicos.">
-  <meta name="keywords" content="peluches, juguetes, Aqui Toys, tienda de juguetes, regalos para niños, juguetes online Chile">
-  <meta property="og:title" content="Aqui Toys | Peluches y Juguetes">
-  <meta property="og:description" content="Explora peluches y juguetes con diseños únicos.">
-  <meta property="og:image" content="{% static 'img/seo/og-image.jpg' %}">
-  <meta property="og:url" content="{{ request.build_absolute_uri }}">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aqui Toys | Peluches y Juguetes">
-  <meta name="twitter:description" content="Descubre el catálogo de peluches y juguetes de Aqui Toys.">
-  <meta name="twitter:image" content="{% static 'img/seo/og-image.jpg' %}">
-{% endblock %}
-
+{% block title %}La Aventura Comienza Aquí{%endblock %} {% block content %}
 <main class="flex-1">
+  {% load static %}
 
-  <section class="relative bg-gradient-to-br from-pink-50 to-yellow-50 py-20 sm:py-24">
-        <div class="bubbles-container">
+  <section
+    class="relative bg-gradient-to-br from-pink-50 to-yellow-50 py-20 sm:py-24"
+  >
+    <div class="bubbles-container">
       <div class="bubble"></div>
       <div class="bubble"></div>
       <div class="bubble"></div>
@@ -26,12 +14,19 @@
       <div class="bubble"></div>
       <div class="bubble"></div>
     </div>
+
     <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 items-center gap-y-16 lg:grid-cols-2 lg:gap-x-12">
+      <div
+        class="grid grid-cols-1 items-center gap-y-16 lg:grid-cols-2 lg:gap-x-12"
+      >
         <div>
-          <p class="font-semibold uppercase tracking-widest text-[#E95A44]">Catálogo disponible</p>
-          <h1 class="mt-4 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
-            Peluches y Juguetes en Chile – Aqui Toys
+          <p class="font-semibold uppercase tracking-widest text-[#E95A44]">
+            Catálogo disponible
+          </p>
+          <h1
+            class="mt-4 text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl"
+          >
+            Conoce nuestros peluches y juguetes
           </h1>
           <p class="mt-6 text-lg leading-8 text-gray-600">
             Explora nuestro catálogo actualizado con todos los modelos
@@ -39,25 +34,30 @@
             para elegir tu favorito.
           </p>
           <div class="mt-10">
-            <a href="{% url 'lista_productos' %}" class="rounded-full bg-[#E95A44] px-8 py-4 text-base font-bold text-white shadow-lg transition duration-300 hover:bg-opacity-80">
-              Ver catálogo completo
+            <a
+              href="{% url 'lista_productos' %}"
+              class="rounded-full bg-[#E95A44] px-8 py-4 text-base font-bold text-white shadow-lg transition duration-300 hover:bg-opacity-80"
+            >
+              Ver catálogo
             </a>
           </div>
         </div>
-                <div id="hero-slideshow" class="relative h-full w-full min-h-[450px]">
+
+        <div id="hero-slideshow" class="relative h-full w-full min-h-[450px]">
           <div id="slides-container">
             <img
               src="https://images.unsplash.com/photo-1705292089515-7f835823d78b?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Colección de peluches Aqui Toys" class="slide active"
+              alt="Fondo de peluches 1"
+              class="slide active"
             />
             <img
               src="https://images.unsplash.com/photo-1550747545-c896b5f89ff7?q=80&w=1167&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Juguetes infantiles en stock"
+              alt="Fondo de peluches 2"
               class="slide"
             />
             <img
               src="https://images.unsplash.com/photo-1738441634776-0bf754f6084d?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Peluches coloridos y divertidos"
+              alt="Fondo de peluches 3"
               class="slide"
             />
           </div>
@@ -75,57 +75,87 @@
             </svg>
         </button>
       </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- DESTACADOS -->
-<section class="py-20 sm:py-28">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <h2 class="mb-12 text-center text-5xl font-brand tracking-tight text-[var(--text-color)]">Productos Destacados</h2>
-    <div class="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-      {% for producto in productos_destacados %}
-      <div class="group relative text-center">
-        <a href="{% url 'detalle_producto' producto.pk %}" class="block">
-          <div class="aspect-square w-full overflow-hidden rounded-2xl bg-[var(--light-color)] p-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl group-hover:bg-[var(--accent-color)]/40">
-            <img alt="Comprar {{ producto.nombre }} en Aqui Toys" class="h-full w-full object-contain object-center drop-shadow-xl" src="{{ producto.imagen.url }}" />
+  <section class="py-20 sm:py-28">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="mb-12 text-center text-5xl font-brand tracking-tight text-[var(--text-color)]"
+      >
+        Destacados
+      </h2>
+      <div
+        class="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {% for producto in productos_destacados %}
+        <div class="group relative text-center">
+          <div
+            class="aspect-square w-full overflow-hidden rounded-2xl bg-[var(--light-color)] p-4 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl group-hover:bg-[var(--accent-color)]/40"
+          >
+            <img
+              alt="{{ producto.nombre }}"
+              class="h-full w-full object-contain object-center drop-shadow-xl"
+              src="{{ producto.imagen.url }}"
+            />
           </div>
-        </a>
-        <div class="mt-4">
-          <h3 class="text-xl font-bold text-[var(--text-color)]">
-            <a href="{% url 'detalle_producto' producto.pk %}" class="transition hover:text-[var(--primary-color)]">{{ producto.nombre }}</a>
-          </h3>
-          <p class="mt-2 text-xl font-bold text-[var(--primary-color)]">${{ producto.precio }}</p>
+          <div class="mt-4">
+            <h3 class="text-xl font-bold text-[var(--text-color)]">
+              <a
+                href="{% url 'detalle_producto' producto.pk %}"
+                class="transition hover:text-[var(--primary-color)]"
+              >
+                <span aria-hidden="true" class="absolute inset-0"></span>
+                {{ producto.nombre }}
+              </a>
+            </h3>
+            <p class="mt-2 text-xl font-bold text-[var(--primary-color)]">
+              ${{ producto.precio }}
+            </p>
+          </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+    </div>
+  </section>
+
+<section class="py-20 sm:py-28 bg-[#FAF9F7]">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      class="mb-12 text-center text-5xl font-brand tracking-tight text-[var(--text-color)]"
+    >
+      Nuestras Categorías
+    </h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% for categoria in categorias %}
+        <a class="swiper-slide group block text-center" href="{% url 'lista_productos' %}?categoria={{ categoria.id }}">
+          <div
+            class="aspect-square overflow-hidden rounded-full border-4 border-white shadow-md transition-all duration-300 group-hover:border-[var(--primary-color)] group-hover:scale-90 bg-white flex items-center justify-center"
+          >
+            {% if categoria.imagen %}
+            <img
+              src="{{ categoria.imagen.url }}"
+              alt="Categoría {{ categoria.nombre }}"
+              class="h-full w-full object-cover"
+            />
+            {% else %}
+            <span class="text-5xl drop-shadow-md">🧸</span>
+            {% endif %}
+          </div>
+          <p class="mt-4 text-xl font-bold text-[var(--text-color)]">
+            {{ categoria.nombre }}
+          </p>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </div>
 </section>
-
-<!-- CATEGORÍAS -->
-  <section class="py-20 sm:py-28 bg-[#FAF9F7]">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="mb-12 text-center text-5xl font-brand tracking-tight text-[var(--text-color)]">Nuestras categorías</h2>
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          {% for categoria in categorias %}
-          <a class="swiper-slide group block text-center" href="{% url 'lista_productos' %}?categoria={{ categoria.id }}">
-            <div class="aspect-square overflow-hidden rounded-full border-4 border-white shadow-md transition-all duration-300 group-hover:border-[var(--primary-color)] group-hover:scale-90 bg-white flex items-center justify-center">
-              {% if categoria.imagen %}
-              <img src="{{ categoria.imagen.url }}" alt="Categoría {{ categoria.nombre }} de juguetes" class="h-full w-full object-cover" />
-              {% else %}
-              <span class="text-5xl drop-shadow-md">🧸</span>
-              {% endif %}
-            </div>
-            <p class="mt-4 text-xl font-bold text-[var(--text-color)]">{{ categoria.nombre }}</p>
-          </a>
-          {% endfor %}
-        </div>
-        <div class="swiper-pagination"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      </div>
-    </div>
-  </section>
 </main>
 {% endblock %}
