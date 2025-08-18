@@ -223,12 +223,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    //titulo de categorias
+    const title = document.querySelector('#featured-title');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            } 
+                
+            else {
+                entry.target.classList.remove('in-view');
+            }
+        });
+    }, {
+        threshold: 0.5 
+    });
+
+        observer.observe(title);
 });
 
+    //recorrer categorias
   var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 2, // Tu configuración actual
+        slidesPerView: 2, 
         spaceBetween: 20, 
-        loop: {% if productos_relacionados|length >= 4 %}true{% else %}false{% endif %}, // Solución al warning
+        loop: {% if productos_relacionados|length >= 4 %}true{% else %}false{% endif %}, 
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
