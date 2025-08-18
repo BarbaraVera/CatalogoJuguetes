@@ -97,7 +97,7 @@
   <section class="py-20 sm:py-28 bg-[#FAF9F7]">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <h2 id="featured-title" class="mb-12 text-center text-5xl font-brand tracking-tight text-[var(--text-color)]">Nuestras categorías</h2>
-      <div class="swiper mySwiper">
+      <div class="swiper mySwiper" data-loop-enabled="{% if productos_relacionados|length >= 4 %}true{% else %}false{% endif %}">
         <div class="swiper-wrapper">
           {% for categoria in categorias %}
           <a class="swiper-slide group block text-center" href="{% url 'lista_productos' %}?categoria={{ categoria.id }}">
